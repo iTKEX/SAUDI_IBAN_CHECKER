@@ -130,17 +130,17 @@ function checkIBAN(IBAN) {
     //reomve spaces
     IBAN = IBAN.replaceAll(" ", '');
 
-    //Check length of IBAN is 24
-    if (IBAN.length !== 24) {
-        checker = false;
-        message = "* IBAN should contain 24 Digit";
-        return checker
-    }
-
     //check if start with SA
     if (!IBAN.startsWith('SA')) {
         checker = false;
         message = "* IBAN should start with 'SA'";
+        return checker
+    }
+
+    //Check length of IBAN is 24
+    if (IBAN.length !== 24) {
+        checker = false;
+        message = "* IBAN should contain 24 Digit";
         return checker
     }
 
@@ -155,7 +155,7 @@ function checkIBAN(IBAN) {
     });
 
     if (samaCodeChecker == false) {
-        checker ==false;
+        checker = false;
         message = "* IBAN isn't Correct";
         return checker;
     }
